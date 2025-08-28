@@ -1,0 +1,53 @@
+app_name: dataset-annotation-tool
+debug: false
+file_processing:
+  encoding_fallback:
+  - utf-8
+  - gbk
+  - latin-1
+  max_file_size: 50MB
+  sample_head_lines: 1000
+  sample_random_size: 500
+  sample_tail_lines: 100
+llm:
+  api_key: test-key-for-testing
+  base_url: https://api.siliconflow.cn/v1
+  max_tokens: 4000
+  model: THUDM/GLM-4-9B-0414
+  provider: siliconflow
+  temperature: 0.1
+  timeout: 60
+logging:
+  format: json
+  level: INFO
+monitoring:
+  directories: []
+  patterns:
+  - '**/qiaoyu-*'
+  polling_interval: 30
+  recursive: true
+node_config:
+  cache_enabled: true
+  max_retries: 3
+  timeout: 60
+output:
+  backup_existing: true
+  default_template: default.md.j2
+  output_formats:
+  - markdown
+  - json
+  template_dir: /mnt/d/qy/数据集标注工具/dsmeta/templates
+quality_control:
+  enum_validation: true
+  min_confidence_score: 0.7
+  require_human_review_threshold: 0.5
+  required_fields:
+  - name
+  - description
+  - modality
+search:
+  enabled: true
+  max_results: 10
+  provider: tavily
+  timeout: 30
+version: 0.1.0
