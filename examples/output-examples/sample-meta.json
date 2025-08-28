@@ -1,0 +1,85 @@
+{
+  "id": "abc123def456",
+  "name": "CyberBench",
+  "description": "网络安全领域的综合基准测试数据集，包含多种网络安全相关的评测任务。该数据集专门设计用于评估大语言模型在网络安全代码分析、漏洞检测和安全评估方面的能力。",
+  "source": "GitHub",
+  "source_url": "https://github.com/cybersec-research/CyberBench",
+  "size": "15.2MB",
+  "num_files": 124,
+  "num_records": 5000,
+  "languages": ["zh", "en"],
+  "modality": "代码",
+  "file_formats": [
+    {
+      "format": ".py",
+      "count": 45,
+      "size": "8.1MB",
+      "ratio": "53.3%"
+    },
+    {
+      "format": ".json",
+      "count": 29,
+      "size": "2.1MB",
+      "ratio": "13.8%"
+    },
+    {
+      "format": ".cpp",
+      "count": 18,
+      "size": "3.2MB",
+      "ratio": "21.1%"
+    },
+    {
+      "format": ".txt",
+      "count": 15,
+      "size": "1.1MB",
+      "ratio": "7.2%"
+    },
+    {
+      "format": ".md",
+      "count": 17,
+      "size": "0.7MB",
+      "ratio": "4.6%"
+    }
+  ],
+  "use_case": "模型评测",
+  "task_types": [
+    "代码分析",
+    "漏洞检测",
+    "安全评估",
+    "静态分析",
+    "动态分析"
+  ],
+  "input_schema": {
+    "code_snippet": "string",
+    "language": "string",
+    "vulnerability_type": "string"
+  },
+  "label_schema": {
+    "is_vulnerable": "boolean",
+    "vulnerability_severity": "enum[low,medium,high,critical]",
+    "cwe_category": "string"
+  },
+  "domain": "网络攻防",
+  "business_direction": [
+    "代码分析",
+    "漏洞挖掘",
+    "策略规划"
+  ],
+  "business_point": [
+    "静态分析",
+    "脆弱性分析",
+    "代码辅助生成"
+  ],
+  "rating": "高级",
+  "creator": "qiaoyu",
+  "creation_date": "2025-04-14",
+  "version": "v1.0",
+  "license": "MIT",
+  "access_level": "public",
+  "citation": "CyberBench: A Comprehensive Benchmark for Cybersecurity Code Analysis",
+  "sample": "```python\ndef check_sql_injection(user_input):\n    dangerous_patterns = ['union', 'select', 'drop', 'delete']\n    for pattern in dangerous_patterns:\n        if pattern.lower() in user_input.lower():\n            return True\n    return False\n```",
+  "remarks": "该数据集通过智能文档解析和扩展生成，基于原始README.md文件的信息进行了合理的业务标签扩展",
+  "pii_risk": "low",
+  "quality_notes": "数据质量较高，适合研究使用。代码样本经过人工验证，涵盖常见漏洞类型",
+  "checksum": "7ca0894dcde72cfd"
+}

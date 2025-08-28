@@ -1,0 +1,110 @@
+# {{ name }}
+
+{{ description }}
+
+## 基本信息
+
+- **数据集ID**: `{{ id }}`
+- **数据集名称**: {{ name }}
+{% if creator -%}
+- **创建者**: {{ creator }}
+{% endif -%}
+{% if creation_date -%}
+- **创建日期**: {{ creation_date }}
+{% endif -%}
+- **版本**: {{ version }}
+- **总大小**: {{ size }}
+- **文件数量**: {{ num_files }}
+{% if num_records -%}
+- **记录数**: {{ num_records }}
+{% endif -%}
+{% if languages -%}
+- **语言**: {{ languages | join(', ') }}
+{% endif -%}
+
+## 技术属性
+
+- **数据模态**: {{ modality }}
+- **主要用途**: {{ use_case }}
+{% if task_types -%}
+- **任务类型**: {{ task_types | join(', ') }}
+{% endif -%}
+
+### 文件格式统计
+
+{% for fmt in file_formats -%}
+- **{{ fmt.format }}**: {{ fmt.count }} 个文件 ({{ fmt.size }}, {{ fmt.ratio }})
+{% endfor -%}
+
+{% if input_schema or label_schema -%}
+### 数据结构
+
+{% if input_schema -%}
+#### 输入结构
+```json
+{{ input_schema | tojson(indent=2) }}
+```
+{% endif -%}
+
+{% if label_schema -%}
+#### 标签结构  
+```json
+{{ label_schema | tojson(indent=2) }}
+```
+{% endif -%}
+{% endif -%}
+
+## 业务属性
+
+- **专业领域**: {{ domain }}
+{% if business_direction -%}
+- **业务方向**: {{ business_direction }}
+{% endif -%}
+{% if business_point -%}
+- **业务场景**: {{ business_point }}
+{% endif -%}
+- **专业评级**: {{ rating }}
+
+## 管理信息
+
+{% if source -%}
+- **数据来源**: {{ source }}
+{% endif -%}
+{% if source_url -%}
+- **来源链接**: [{{ source_url }}]({{ source_url }})
+{% endif -%}
+{% if license -%}
+- **许可证**: {{ license }}
+{% endif -%}
+- **访问级别**: {{ access_level }}
+{% if citation -%}
+- **引用方式**: {{ citation }}
+{% endif -%}
+
+{% if sample -%}
+## 数据样例
+
+```
+{{ sample }}
+```
+{% endif -%}
+
+## 质量与安全
+
+- **隐私风险评估**: {{ pii_risk }}
+{% if quality_notes -%}
+- **质量说明**: {{ quality_notes }}
+{% endif -%}
+{% if checksum -%}
+- **数据校验和**: `{{ checksum }}`
+{% endif -%}
+
+{% if remarks -%}
+## 备注
+
+{{ remarks }}
+{% endif -%}
+
+---
+
+*本文档由 Dataset Metadata Annotation Tool 自动生成*

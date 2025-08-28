@@ -1,0 +1,52 @@
+# Basic Configuration Example for dsmeta
+# Copy this file and customize for your needs
+
+# Application settings
+app_name: "dataset-annotation-tool"
+version: "1.2.0"
+debug: false
+
+# LLM Configuration - REQUIRED
+llm:
+  provider: "siliconflow"
+  model: "THUDM/GLM-4-9B-0414"
+  base_url: "https://api.siliconflow.cn/v1"
+  api_key: "your-api-key-here"  # Replace with your actual API key
+  temperature: 0.1
+  max_tokens: 4000
+  timeout: 60
+
+# File Processing - Basic settings
+file_processing:
+  max_file_size: "50MB"
+  sample_head_lines: 1000
+  sample_tail_lines: 100
+  sample_random_size: 500
+  encoding_fallback:
+    - "utf-8"
+    - "gbk"
+    - "latin-1"
+
+# Output Configuration
+output:
+  template_dir: "./templates"
+  default_template: "default.md.j2"
+  output_formats:
+    - "markdown"
+    - "json"
+  backup_existing: true
+
+# Quality Control
+quality_control:
+  min_confidence_score: 0.7
+  required_fields:
+    - "name"
+    - "description"
+    - "modality"
+  enum_validation: true
+
+# Node Configuration
+node_config:
+  max_retries: 3
+  timeout: 60
+  cache_enabled: true
